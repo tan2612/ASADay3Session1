@@ -1,0 +1,17 @@
+pipeline {
+    agent any
+    stages{
+        stage('Git Checkout'){
+            steps {
+               checkout([$class: 'GitSCM', branches: [[name: '*/develop']], extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'C:\\Users\\tanyayadav\\Documents\\GitHub\\CheckoutCode']], userRemoteConfigs: [[credentialsId: '9ded1395-4146-4c4f-bb15-0e4559564421', url: 'https://github.com/tan2612/ASADay3Session1.git']]])
+            }
+        }
+        stage('Install'){
+            steps {
+                echo "Installing the maven repo"
+                bat "cd day3session1demo"
+                bat "mvn clean install"
+            }
+        }
+    }
+}
