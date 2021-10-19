@@ -9,8 +9,11 @@ pipeline {
         stage('Install'){
             steps {
                 echo "Installing the maven repo"
-                bat "cd day3session1demo"
-                bat "mvn clean install"
+                dir("C:\Users\tanyayadav\Documents\GitHub\CheckoutCode\day3session1demo") {
+				    sh "pwd"
+				    bat "mvn clean install"
+				    
+				}
             }
         }
     }
